@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Wallet Stone</string>
+    <string name="title_dashboard">Dashboard</string>
 </resources>
