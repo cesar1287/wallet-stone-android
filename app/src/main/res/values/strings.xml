@@ -17,10 +17,12 @@
     <string name="already_have_account">Já tem conta?</string>
     <string name="data_successfully_saved">Dados salvos com sucesso</string>
     <string name="are_you_sure">Deseja realmente sair?</string>
+    <string name="not_have_account">Não tem conta?</string>
 
     <string name="error_all_fields_required">Todos os campos são obrigatórios</string>
     <string name="error_user_already_registered">Usuário já cadastrado</string>
-    
+    <string name="error_email_and_or_password_wrong">Usuário e/ou senha incorreto(s)</string>
+
     <string name="yes">Sim</string>
     <string name="cancel">Cancelar</string>
 </resources>
