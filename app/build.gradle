@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "comcesar1287.github.walletstone"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -27,6 +27,10 @@ dependencies {
 
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+
+    //jetpack
+    implementation "android.arch.persistence.room:runtime:${versions.room}"
+    kapt "android.arch.persistence.room:compiler:${versions.room}"
 
     //support library
     implementation "com.android.support:appcompat-v7:${versions.support}"
