@@ -3,6 +3,7 @@
     package="comcesar1287.github.walletstone">
 
     <application
+        android:name=".views.MainApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.activities.MainActivity">
+            android:name=".views.activities.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -18,8 +20,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".views.activities.SignUpActivity" />
-        <activity android:name=".views.activities.SignInActivity" />
+        <activity
+            android:name=".views.activities.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".views.activities.SignInActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

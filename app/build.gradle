@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -19,6 +21,10 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    androidExtensions {
+        experimental = true
     }
 }
 
@@ -43,6 +49,7 @@ dependencies {
     //util
     implementation "com.blankj:utilcode:${versions.utilCode}"
     implementation "com.airbnb.android:lottie:${versions.lottieVersion}"
+    implementation "com.facebook.stetho:stetho:${versions.stetho}"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
