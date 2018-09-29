@@ -1,9 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<android.support.v4.widget.NestedScrollView
+    android:id="@+id/scrollView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    tools:context=".views.activities.SignInActivity">
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:src="@drawable/ic_blockchain"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_width="150dp"
+            android:layout_height="300dp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:padding="16dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/imageView">
+            <EditText
+                android:id="@+id/emailEdit"
+                android:hint="@string/label_email"
+                android:inputType="textEmailAddress"
+                android:drawableStart="@drawable/ic_outline_person_white"
+                android:drawablePadding="16dp"
+                android:layout_marginBottom="16dp"
+                style="@style/Widget.EditDefault"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_input" />
+
+            <EditText
+                android:id="@+id/passwordEdit"
+                android:hint="@string/label_password"
+                style="@style/Widget.EditDefault"
+                android:drawableStart="@drawable/ic_outline_lock"
+                android:drawablePadding="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:inputType="textPassword"
+                android:layout_height="@dimen/default_input"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/signInButton"
+                    style="@style/Widget.ButtonRed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:text="@string/label_sign_in"
+                    android:visibility="visible" />
+                <ProgressBar
+                    style="?android:attr/progressBarStyle"
+                    android:visibility="gone"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="16dp"
+                    android:id="@+id/progressBar"
+                    android:indeterminate="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+                <TextView
+                    android:id="@+id/textView"
+                    android:text="@string/not_have_account"
+                    android:textSize="12sp"
+                    android:alpha="0.7"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:padding="4dp"
+                    android:background="?selectableItemBackground"
+                    android:textSize="12sp"
+                    android:id="@+id/signUpButton"
+                    android:textColor="@color/colorAccent"
+                    android:layout_toEndOf="@+id/textView"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/label_sign_up"
+                    android:textAllCaps="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
