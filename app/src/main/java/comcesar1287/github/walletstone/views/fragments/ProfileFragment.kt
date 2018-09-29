@@ -1,8 +1,11 @@
 package comcesar1287.github.walletstone.views.fragments
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.text.Editable
@@ -13,6 +16,7 @@ import comcesar1287.github.walletstone.database.dao.UserDao
 import comcesar1287.github.walletstone.database.models.User
 import comcesar1287.github.walletstone.preferences.MainPreference
 import comcesar1287.github.walletstone.views.MainApp
+import comcesar1287.github.walletstone.views.activities.SignInActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
@@ -50,6 +54,18 @@ class ProfileFragment : Fragment() {
                 nameEdit.text = Editable.Factory.getInstance().newEditable(userNonNull.name)
                 emailEdit.text = Editable.Factory.getInstance().newEditable(userNonNull.email)
                 passwordEdit.text = Editable.Factory.getInstance().newEditable(userNonNull.password)
+            }
+
+            logout.setOnClickListener {
+                val alertDialog = AlertDialog.Builder(activity)
+                alertDialog.setMessage(getString(R.string.are_you_sure))
+                alertDialog.setPositiveButton(getString(R.string.yes)) { _, _ ->
+                    MainPreference.cleanPreference(activity)
+                    startActivity(Intent(activity, SignInActivity::class.java))
+                    activity.finish()
+                }
+                alertDialog.setNegativeButton(getString(R.string.cancel), null)
+                alertDialog.show()
             }
         }
     }
