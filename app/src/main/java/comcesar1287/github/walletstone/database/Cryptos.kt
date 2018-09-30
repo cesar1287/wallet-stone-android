@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-enum class Cryptos(val cryptoId: Int,
+enum class Cryptos(val cryptoId: Long,
                    val cryptoName: String,
                    val cryptoInitials: String,
                    val cryptoIcon: String,
