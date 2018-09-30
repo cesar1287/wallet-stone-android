@@ -13,6 +13,10 @@
     <string name="label_name">Nome</string>
     <string name="label_sign_out">Sair</string>
     <string name="label_save">Salvar</string>
+    <string name="label_zero_value">0,0</string>
+    <string name="label_coin">Moeda</string>
+    <string name="label_share">Participação</string>
+    <string name="label_price">Preço</string>
 
     <string name="already_have_account">Já tem conta?</string>
     <string name="data_successfully_saved">Dados salvos com sucesso</string>
