@@ -11,4 +11,4 @@ data class UserWallet(@PrimaryKey(autoGenerate = true)
                       var id: Long? = null,
                       var userId: Long? = null,
                       var coinId: Long,
-                      var value: Double) : Parcelable
+                      var quantity: Double) : Parcelable
