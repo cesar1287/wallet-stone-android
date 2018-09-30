@@ -8,8 +8,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "cryptos")
 data class Crypto(@PrimaryKey(autoGenerate = true)
-                var id: Int? = null,
-                var name: String,
-                var initials: String,
-                var icon: String,
-                var value: Double) : Parcelable
+                  var id: Long? = null,
+                  var name: String,
+                  var initials: String,
+                  var icon: String,
+                  var value: Double) : Parcelable
