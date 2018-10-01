@@ -16,15 +16,18 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".views.activities.SignUpActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".views.activities.SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".views.activities.TradeActivity"
             android:screenOrientation="portrait"/>
     </application>
 
