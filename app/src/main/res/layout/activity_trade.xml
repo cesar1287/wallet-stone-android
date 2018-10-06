@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,102 +7,161 @@
     android:layout_height="match_parent"
     tools:context=".views.activities.TradeActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        app:elevation="0dp"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            app:elevation="0dp"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="@string/title_trade"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center"
+                    android:id="@+id/toolbar_title" />
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+        <TextView
+            android:id="@+id/coinIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appBarLayout"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_margin="16dp"
+            android:enabled="false"/>
+
+        <TextView
+            android:id="@+id/quantityCoinIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/coinIn"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:enabled="false"/>
+
+        <TextView
+            android:id="@+id/valueCoinIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quantityCoinIn"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:enabled="false"/>
+
+        <TextView
+            android:id="@+id/labelCoinIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/valueCoinIn"
+            android:text="@string/label_value_share"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+            android:id="@+id/totalCoinIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/labelCoinIn"
+            android:layout_alignBaseline="@+id/labelCoinIn"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:layout_marginStart="@dimen/minimum_vertical_margin"/>
+
+        <View
+            android:id="@+id/divisor"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/black"
+            android:layout_below="@id/totalCoinIn"
+            android:layout_marginTop="@dimen/medium_vertical_margin"
+            android:layout_marginBottom="@dimen/medium_vertical_margin"/>
+
+        <TextView
+            android:id="@+id/labelTradeTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divisor"
+            android:layout_marginTop="@dimen/medium_vertical_margin"
+            android:text="@string/label_trade_to"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"/>
+        <Spinner
+            android:id="@+id/spinnerCoinIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/labelTradeTo"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+
+        <EditText
+            android:id="@+id/quantityCoinOut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:text="@string/title_trade"
-                android:textAllCaps="true"
-                android:layout_gravity="center"
-                android:id="@+id/toolbar_title" />
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+            style="@style/Widget.EditForm"
+            android:layout_margin="16dp"
+            android:layout_below="@+id/spinnerCoinIn"
+            android:inputType="numberDecimal"/>
 
-    <TextView
-        android:id="@+id/coinIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appBarLayout"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_margin="16dp"/>
+        <TextView
+            android:id="@+id/labelSubtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/valueCoinOut"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="@string/label_sub_total"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
 
-    <TextView
-        android:id="@+id/quantityCoinIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/coinIn"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:textColor="@color/black"
-        android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/quantityCoinOut"
+            android:layout_marginStart="@dimen/minimum_vertical_margin"
+            android:layout_toEndOf="@id/labelSubtotal"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
 
-    <TextView
-        android:id="@+id/valueCoinIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/quantityCoinIn"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:textColor="@color/black"
-        android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/valueCoinOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/quantityCoinOut"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/black"
+            android:textSize="12sp"/>
 
-    <TextView
-        android:id="@+id/labelTradeTo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/valueCoinIn"
-        android:layout_marginTop="@dimen/medium_vertical_margin"
-        android:text="@string/label_trade_to"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"/>
-    <Spinner
-        android:id="@+id/spinnerCoinIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/labelTradeTo"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"/>
-
-    <EditText
-        android:id="@+id/quantityCoinOut"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.EditForm"
-        android:layout_margin="16dp"
-        android:layout_below="@+id/spinnerCoinIn"
-        android:inputType="numberDecimal"/>
-
-    <TextView
-        android:id="@+id/valueCoinOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/quantityCoinOut"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_alignParentEnd="true"
-        android:textColor="@color/black"
-        android:textSize="18sp"/>
-
-    <Button
-        android:id="@+id/trade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/label_trade"
-        style="@style/Widget.ButtonRed"
-        android:visibility="visible"
-        android:layout_below="@id/valueCoinOut"
-        android:layout_marginTop="@dimen/activity_vertical_margin">
-    </Button>
-</RelativeLayout>
+        <Button
+            android:id="@+id/trade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_trade"
+            style="@style/Widget.ButtonRed"
+            android:visibility="visible"
+            android:layout_below="@id/valueCoinOut"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin">
+        </Button>
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

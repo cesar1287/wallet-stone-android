@@ -28,7 +28,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".views.activities.TradeActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:parentActivityName=".views.activities.MainActivity"/>
     </application>
 
 </manifest>
