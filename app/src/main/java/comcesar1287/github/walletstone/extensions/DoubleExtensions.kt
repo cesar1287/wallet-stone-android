@@ -7,3 +7,8 @@ fun Double.toBRL(): String {
     val ptBr = Locale("pt", "BR")
     return NumberFormat.getCurrencyInstance(ptBr).format(this)
 }
+
+fun Double.toBrazilianFormat(): String {
+    val ptBr = Locale("pt", "BR")
+    return NumberFormat.getNumberInstance(ptBr).format(this)
+}
