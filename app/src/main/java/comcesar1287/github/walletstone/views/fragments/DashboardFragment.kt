@@ -52,7 +52,7 @@ class DashboardFragment : Fragment() {
 
                 val layoutManager = LinearLayoutManager(activity)
                 recyclerView.layoutManager = layoutManager
-                val cryptosAdapter = CryptosAdapter(Crypto.toCryptoDTOList(cryptosList, userWalletList))
+                val cryptosAdapter = CryptosAdapter(activity, Crypto.toCryptoDTOList(cryptosList, userWalletList))
                 recyclerView.adapter = cryptosAdapter
             }
         }
