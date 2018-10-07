@@ -8,8 +8,11 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import comcesar1287.github.walletstone.R
 import comcesar1287.github.walletstone.database.models.Crypto
+import comcesar1287.github.walletstone.database.models.Trade
+import comcesar1287.github.walletstone.database.models.UserWallet
 import comcesar1287.github.walletstone.dto.CryptosDTO
 import comcesar1287.github.walletstone.extensions.toBRL
 import comcesar1287.github.walletstone.extensions.toBrazilianFormat
@@ -37,10 +40,47 @@ class TradeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, T
         setupUI()
 
         trade.setOnClickListener {
-            val quantityCoinOutDouble = quantityCoinOut.text.toString().toDouble()
-            val valueCoinOutDouble = cryptoSelected?.value
+            val quantityTyped = quantityCoinOut.text.toString()
 
+            if (quantityTyped.isBlank()) {
+                Snackbar.make(trade, getText(R.string.error_all_fields_required), Snackbar.LENGTH_SHORT).show()
+            } else {
+                val quantityCoinOutDouble = quantityTyped.toDouble()
+                val valueCoinOutDouble = cryptoSelected?.value
+                val totalCoinOut = quantityCoinOutDouble * valueCoinOutDouble!!
 
+                val quantityCoinInDouble = cryptosDTO.userWallet?.quantity
+                val valueCoinInDouble = cryptosDTO.crypto?.value
+                val totalCoinIn = quantityCoinInDouble!! * valueCoinInDouble!!
+
+                if (totalCoinOut > totalCoinIn) {
+                    Snackbar.make(trade, getText(R.string.error_invalid_trade), Snackbar.LENGTH_SHORT).show()
+                } else {
+                    val userWalletDao = MainApp.database?.userWalletDao()
+                    val tradeDao = MainApp.database?.tradeDao()
+
+                    val exchangeRate = valueCoinOutDouble / valueCoinInDouble
+                    val totalCoinsBurned = quantityCoinOutDouble * exchangeRate
+
+                    val coinOutDb = userWalletDao?.getSpecificUserCoin(cryptosDTO.userWallet?.userId!!, cryptoSelected?.id!!)
+                    val userWallet = UserWallet(userId = cryptosDTO.userWallet?.userId!!, coinId = cryptoSelected?.id!!, quantity = quantityCoinOutDouble
+                            .plus(coinOutDb?.quantity.let { it } ?: 0.0))
+                    userWalletDao?.insertUserCrypto(userWallet)
+
+                    val coinInDb = userWalletDao?.getSpecificUserCoin(cryptosDTO.userWallet?.userId!!, cryptosDTO.userWallet?.coinId!!)
+                    val userWalletCoinIn = UserWallet(userId = cryptosDTO.userWallet?.userId!!, coinId = cryptosDTO.userWallet?.coinId!!,
+                            quantity = (coinInDb!!.quantity - totalCoinsBurned) )
+                    userWalletDao.deleteUser(cryptosDTO.userWallet!!)
+                    userWalletDao.insertUserCrypto(userWalletCoinIn)
+
+                    val trade = Trade(userId = cryptosDTO.userWallet?.userId!!, coinIdIn = cryptosDTO.crypto?.id, quantityIn = totalCoinsBurned,
+                            coinIdOut = cryptoSelected?.id!!, quantityOut = quantityCoinOutDouble)
+                    tradeDao?.insertUserTrade(trade)
+
+                    Toast.makeText(this, getString(R.string.trade_has_been_succssfully), Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+            }
         }
     }
 
