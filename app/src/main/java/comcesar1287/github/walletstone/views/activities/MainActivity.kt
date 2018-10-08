@@ -4,9 +4,9 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.util.Log
 import comcesar1287.github.walletstone.R
 import comcesar1287.github.walletstone.api.APIUtils
+import comcesar1287.github.walletstone.api.models.CentralBank
 import comcesar1287.github.walletstone.api.models.MercadoBitcoin
 import comcesar1287.github.walletstone.database.Cryptos
 import comcesar1287.github.walletstone.database.models.Crypto
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
                 APIUtils.getMercadoBitcoinApi(cryptos.cryptoInitials).getDataCryptoMercadoBitcoin().enqueue(object : Callback<MercadoBitcoin>{
                     override fun onFailure(call: Call<MercadoBitcoin>, t: Throwable) {
-                        Log.i("teste", t.localizedMessage)
+                        //TODO
                     }
 
                     override fun onResponse(call: Call<MercadoBitcoin>, response: Response<MercadoBitcoin>) {
@@ -68,6 +68,23 @@ class MainActivity : AppCompatActivity() {
                     }
 
                 })
+
+                if (cryptos.cryptoInitials == "USD") {
+                    APIUtils.getCentralBankApi().getDataCryptoCentralBank().enqueue(object : Callback<CentralBank>{
+                        override fun onFailure(call: Call<CentralBank>, t: Throwable) {
+                            //TODO
+                        }
+
+                        override fun onResponse(call: Call<CentralBank>, response: Response<CentralBank>) {
+                            if (response.isSuccessful) {
+                                val centralBank = response.body()
+
+                                cryptoDao?.updateValueCrypto(centralBank!!.value[0].cotacaoVenda, "USD")
+                            }
+                        }
+
+                    })
+                }
             }
             //[END]
 
