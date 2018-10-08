@@ -29,4 +29,13 @@
 
     <string name="yes">Sim</string>
     <string name="cancel">Cancelar</string>
+    <string name="title_trade">Trade</string>
+    <string name="label_no_data">Sem dados</string>
+    <string name="label_trade_to">Trocar por:</string>
+    <string name="label_trade">Efetuar troca</string>
+    <string name="error_invalid_quantity">Quantidade inválida</string>
+    <string name="label_value_share">Valor participação:</string>
+    <string name="label_sub_total">Sub-total:</string>
+    <string name="error_invalid_trade">Troca inválida, valor excede sua participação</string>
+    <string name="trade_has_been_succssfully">Troca realizada com sucesso</string>
 </resources>
