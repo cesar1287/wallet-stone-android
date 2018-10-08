@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="comcesar1287.github.walletstone">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".views.MainApp"
         android:allowBackup="true"

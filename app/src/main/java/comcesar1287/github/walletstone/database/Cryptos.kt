@@ -13,5 +13,5 @@ enum class Cryptos(val cryptoId: Long,
     BRITA(2, "Brita", "USD", "ic_coin", 4.05),
     BTC(3, "Bitcoin", "BTC", "ic_bitcoin", 26659.06),
     LTC(4, "Litcoin", "LTC", "ic_litecoin", 245.78),
-    BCASH(5, "Bitcoin Cash", "BCASH", "ic_bitcoin_cash", 2180.28)
+    BCASH(5, "Bitcoin Cash", "BCH", "ic_bitcoin_cash", 2180.28)
 }

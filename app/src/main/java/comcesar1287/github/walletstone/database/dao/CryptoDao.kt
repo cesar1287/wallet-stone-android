@@ -8,6 +8,8 @@ interface CryptoDao {
 
     @Query("SELECT * FROM cryptos") fun getAllCryptos(): List<Crypto>?
 
+    @Query("UPDATE cryptos SET value = :value WHERE initials = :crypto") fun updateValueCrypto(value: Double, crypto: String)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE) fun insertCryptos(vararg cryptos: Crypto)
 
     @Update
