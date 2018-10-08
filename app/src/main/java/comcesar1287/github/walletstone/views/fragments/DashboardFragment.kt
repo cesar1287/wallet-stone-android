@@ -25,8 +25,10 @@ class DashboardFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onResume() {
+        super.onResume()
+
+        valueTotal = 0.0
 
         activity?.let { activity ->
             val cryptoDao = MainApp.database?.cryptoDao()
