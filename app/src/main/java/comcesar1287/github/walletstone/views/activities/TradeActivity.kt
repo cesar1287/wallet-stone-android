@@ -73,8 +73,8 @@ class TradeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, T
                     userWalletDao.deleteUser(cryptosDTO.userWallet!!)
                     userWalletDao.insertUserCrypto(userWalletCoinIn)
 
-                    val trade = Trade(userId = cryptosDTO.userWallet?.userId!!, coinIdIn = cryptosDTO.crypto?.id, quantityIn = totalCoinsBurned,
-                            coinIdOut = cryptoSelected?.id!!, quantityOut = quantityCoinOutDouble)
+                    val trade = Trade(userId = cryptosDTO.userWallet?.userId!!, coinIdIn = cryptoSelected?.id!!, quantityIn = quantityCoinOutDouble,
+                            coinIdOut = cryptosDTO.crypto?.id!!, quantityOut = totalCoinsBurned)
                     tradeDao?.insertUserTrade(trade)
 
                     Toast.makeText(this, getString(R.string.trade_has_been_succssfully), Toast.LENGTH_SHORT).show()

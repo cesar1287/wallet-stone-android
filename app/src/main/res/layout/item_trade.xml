@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/cryptoLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/iconCoinIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_baseline_call_received_24px"
+        android:layout_margin="8dp"/>
+
+    <TextView
+        android:id="@+id/nameCoinIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/iconCoinIn"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/quantityCoinIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/nameCoinIn"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"/>
+
+    <ImageView
+        android:id="@+id/iconCoinOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_baseline_call_made_24px"
+        android:layout_below="@+id/iconCoinIn"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/medium_vertical_margin"/>
+
+    <TextView
+        android:id="@+id/nameCoinOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/divisor"
+        android:layout_marginBottom="10dp"
+        android:layout_toStartOf="@+id/iconCoinOut"
+        android:layout_marginEnd="@dimen/medium_vertical_margin"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/quantityCoinOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/nameCoinOut"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"/>
+
+    <View
+        android:id="@+id/divisor"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/iconCoinOut"
+        android:background="@color/black"/>
+
+</RelativeLayout>
