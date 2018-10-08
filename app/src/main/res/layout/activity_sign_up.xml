@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scrollView"
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorPrimary">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".views.activities.SignUpActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:focusableInTouchMode="true">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </android.support.v7.widget.Toolbar>
+        android:focusableInTouchMode="true"
+        android:layout_margin="@dimen/activity_horizontal_margin">
 
         <ImageView
             android:id="@+id/imageView"
@@ -25,26 +21,38 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
             android:layout_width="150dp"
-            android:layout_height="300dp" />
+            android:layout_height="180dp" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_alignParentBottom="true"
-            android:padding="16dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:orientation="vertical"
-            android:layout_below="@+id/imageView">
+            android:layout_below="@id/imageView">
+
             <EditText
-                android:id="@+id/emailEdit"
-                android:hint="@string/label_email"
-                android:inputType="textEmailAddress"
+                android:id="@+id/nameEdit"
+                android:hint="@string/label_name"
+                android:inputType="textPersonName"
                 android:drawableStart="@drawable/ic_outline_person_white"
                 android:drawablePadding="16dp"
                 android:layout_marginBottom="16dp"
                 style="@style/Widget.EditDefault"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/default_input" />
+                android:layout_height="@dimen/default_input"/>
+
+            <EditText
+                android:id="@+id/emailEdit"
+                android:hint="@string/label_email"
+                android:inputType="textEmailAddress"
+                android:drawableStart="@drawable/ic_outline_email"
+                android:drawablePadding="16dp"
+                android:layout_marginBottom="16dp"
+                style="@style/Widget.EditDefault"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_input"/>
 
             <EditText
                 android:id="@+id/passwordEdit"
@@ -58,19 +66,18 @@
                 android:layout_height="@dimen/default_input"/>
 
             <RelativeLayout
+                android:id="@+id/relativeButton"
                 android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/signInButton"
+                    android:id="@+id/signUpButton"
                     style="@style/Widget.ButtonRed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:text="@string/label_sign_in"
-                    android:visibility="visible" />
+                    android:text="@string/label_sign_up"/>
+
                 <ProgressBar
                     style="?android:attr/progressBarStyle"
                     android:visibility="gone"
@@ -84,14 +91,17 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/haveAccount"
                 android:layout_width="match_parent"
                 android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
+                android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/textView"
-                    android:text="@string/not_have_account"
+                    android:text="@string/already_have_account"
                     android:textSize="12sp"
                     android:alpha="0.7"
                     android:textColor="@android:color/white"
@@ -99,19 +109,24 @@
                     android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
                 <TextView
-                    android:padding="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
                     android:background="?selectableItemBackground"
                     android:textSize="12sp"
-                    android:id="@+id/signUpButton"
+                    android:id="@+id/signInButton"
                     android:textColor="@color/colorAccent"
                     android:layout_toEndOf="@+id/textView"
                     android:layout_marginStart="16dp"
-                    android:text="@string/label_sign_up"
+                    android:text="@string/label_sign_in"
                     android:textAllCaps="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>
+
 </android.support.v4.widget.NestedScrollView>
